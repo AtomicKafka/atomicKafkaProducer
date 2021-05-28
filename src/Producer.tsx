@@ -1,38 +1,48 @@
-import React, { useState, useEffect } from "react";
-import { render } from 'react-dom'
-import ioClient from 'socket.io-client'
+/**
+ * Producer.tsx renders a functional component that uses Atomic Kafka to produce data to a
+ * websocket on the server, which then sends that data to the Kafka cluster.
+ */
 
+import React, { useState, useEffect } from "react";
+import ioClient from 'socket.io-client';
+
+// TypeScript declaration for the JavaScript require function
 declare function require(name:string)
+// Require in the client-side class of atomic-kafka
 const AtomicKafkaClient = require('atomic-kafka/client').default
 
+// Type annotation for SaleOrder object
 interface SaleOrder {
+  id: string,
   SKU: string,
-  qty: string,
+  qty: number,
 }
 
-
+// Functional Producer component
 function Producer() {
-  // const AKC = require('atomic-kafka/client')
-  // console.log(AtomicKafkaClient)
+  const [id, setId] = useState('') 
   const [sku, setSku] = useState('')
   const [qty, setQty] = useState('')
-  const [id, setId] = useState('') 
 
-  const akc = new AtomicKafkaClient('http://localhost:3001')
+  // Instantiation of the client class using the server that was also used to instantiate
+  // the server class
+  const akc = new AtomicKafkaClient('http://localhost:3001');
 
+  // onClick function linked to PRODUCE button
   function socketProducerInvoke() {
-    console.log("the state of num is now...", qty);
+    // set socket connection to same address
     const socket = ioClient('http://localhost:3001');
 
-    const payload = {
+    const payload: SaleOrder = {
       id: String(id),
       SKU: sku,
       qty: Number(qty),
     };
 
-    akc.producer('postMessage', payload)
-
+    // Send the payload as a message to the Kafka cluster
+    akc.producer('postMessage', payload);
   }
+
     return (
       <div className="produceData">
         <input type="text" className="idInput" placeholder='Enter Id' onChange={e => setId(e.target.value)} />
