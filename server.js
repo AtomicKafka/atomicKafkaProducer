@@ -81,7 +81,7 @@ const produceMyWay = () => {
     } catch (err) {
       console.log("Error with producing in produce(): ", err);
     }
-  }, 1000);
+  }, 4000);
 };
 // Uncomment invocation below to test this app with an endless stream of toy data
 // produceMyWay();

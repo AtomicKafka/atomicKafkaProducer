@@ -31,7 +31,7 @@ function Producer() {
   // the server class
   const akc = new AtomicKafkaClient('http://localhost:3001');
 
-function prepOrder(e) {
+  function prepOrder(e) {
     setId(user+orderNum);
     setSku(e.target.id);
     setQty(e.target.value);
