@@ -29,7 +29,7 @@
 
 **AtomicKafkaProducer** demonstrates a functioning standalone Producer microservice built into a React Component. This demo app was built to be used alongside [AtomicKafkaConsumer](https://github.com/AtomicKafka/atomicKafkaConsumer).
 
-If you are running the corresponding [Consumer](https://github.com/AtomicKafka/atomicKafkaConsumer), the Consumer will listen to the data that you produce from your producer app in real time. Try it with your colleagues by setting up a free [Confluent Cloud](https://www.confluent.io/confluent-cloud/) and sharing the **_API credentials_** with each to see how AtomicKafka integratesn with the cloud!
+If you are running the corresponding [Consumer](https://github.com/AtomicKafka/atomicKafkaConsumer), the Consumer will listen to the data that you produce from your producer app in real time. Try it with your colleagues by setting up a free [Confluent Cloud](https://www.confluent.io/confluent-cloud/) and sharing the **_API credentials_** with each to see how AtomicKafka integrates with the cloud!
 
 ---
 
